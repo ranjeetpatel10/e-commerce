@@ -1,0 +1,32 @@
+<div class="toggle-featured">
+    <label>
+        <input type="checkbox" [(ngModel)]="showFeatured">
+        Show Featured
+    </label>
+</div>
+
+<div class="products">
+    @for (product of productService.products; track product.title) {
+    <div class="card" [hidden]="(showFeatured && product.category !== 'Featured')">
+        <img [src]=" product.image" alt="{{ product.title }}">
+        <h3>{{ product.title }}</h3>
+        <p>{{ product.description }}</p>
+        <div class="price">
+            <p><strong>${{ product.price }}</strong></p>
+            @if((productService.cart().find(i=> i.product.title === product.title)?.quantity || 0) === 0) {
+            <button (click)="productService.addToCart(product)">Add to Cart</button>
+            } @else {
+            <div class="quantity-controls">
+                <button (click)="productService.removeFromCart(product)">-</button>
+                <span>
+                    {{
+                    productService.cart().find(i => i.product.title === product.title)?.quantity || 0
+                    }}
+                </span>
+                <button (click)="productService.addToCart(product)">+</button>
+            </div>
+            }
+        </div>
+    </div>
+    }
+</div>

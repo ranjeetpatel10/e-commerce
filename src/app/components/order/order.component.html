@@ -1,0 +1,24 @@
+<div class="orders-container">
+    <h2 class="orders-title">My Orders</h2>
+
+    @if (productService.orders().length === 0) {
+    <p class="empty-orders">
+        You have no orders yet.
+        <a routerLink="/">Add products</a>
+    </p>
+    } @else {
+    <div class="orders">
+        @for (order of productService.orders(); track order.product.title) {
+        <div class="order-item">
+            <span>{{ order.product.title }} - ${{ order.product.price }} × {{ order.quantity }}</span>
+        </div>
+        }
+    </div>
+
+    <div class="orders-total">
+        <strong>Total: ${{ productService.getOrdersTotal() }}</strong>
+    </div>
+
+    <button class="checkout-btn" (click)="productService.clearOrders()">Clear Orders</button>
+    }
+</div>

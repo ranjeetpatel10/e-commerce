@@ -1,0 +1,56 @@
+.header {
+    overflow: hidden;
+    background-color: #023047;
+    margin: 10px 20px;
+}
+
+.header a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+    width: 110px;
+    text-align: left;
+    /* ensures it's clickable */
+}
+
+.header a.logo {
+    font-weight: bold;
+    padding-left: 25px;
+}
+
+.header-right {
+    float: right;
+}
+
+.header a:hover {
+    // background-color: #ddd;
+    // color: black;
+    text-decoration: underline;
+}
+
+.header a.active {
+    // background-color: #04AA6D;
+    // color: white;
+    text-decoration: underline;
+}
+
+.cart-icon {
+    font-size: 0.8rem;
+}
+
+.cart-count {
+    background-color: #dc3545;
+    /* red badge */
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 6px;
+    margin-left: 4px;
+    min-width: 18px;
+    text-align: center;
+}

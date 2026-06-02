@@ -1,0 +1,23 @@
+<div class="header">
+    <a routerLink="/" class="logo">Home</a>
+    <div class="header-right">
+        @if (loginService.isLoggedIn()) {
+        <a routerLink="/myorder" routerLinkActive="active">My Orders</a>
+        <a routerLink="/cart" routerLinkActive="active">Cart
+            <span class="cart-icon">🛒</span>
+            @if (productService.cart().length > 0) {
+            <span class="cart-count">{{ productService.cart().length }}</span>
+            }
+        </a>
+        <a routerLink="/login" (click)="loginService.logout()">Logout</a>
+        } @else {
+        <a routerLink="/cart" routerLinkActive="active">Cart
+            <span class="cart-icon">🛒</span>
+            @if (productService.cart().length > 0) {
+            <span class="cart-count">{{ productService.cart().length }}</span>
+            }
+        </a>
+        <a routerLink="/login" routerLinkActive="active">Login</a>
+        }
+    </div>
+</div>

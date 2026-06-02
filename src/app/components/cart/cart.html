@@ -1,0 +1,31 @@
+<div class="cart-container">
+    <h2 class="cart-title">Your Cart</h2>
+
+    @if (productService.cart().length === 0) {
+    <p class="empty-cart">Your cart is empty</p>
+    } @else {
+    <div class="cart-items">
+        @for (item of productService.cart(); track item.product.title) {
+        <div class="cart-item">
+            <span>{{ item.product.title }} - ${{ item.product.price }} × {{ item.quantity }}</span>
+            <div class="cart-actions">
+                <button (click)="productService.removeFromCart(item.product)">-</button>
+                <button (click)="productService.addToCart(item.product)">+</button>
+            </div>
+        </div>
+        }
+    </div>
+
+    <div class="cart-total">
+        <strong>Total: ${{ productService.getCartTotal() }}</strong>
+    </div>
+
+    @if (loginService.isLoggedIn()) {
+    <button class="checkout-btn" (click)="productService.checkoutCart()">Checkout</button>
+    } @else {
+    <p class="login-to-clear">Please <a routerLink="/login">login</a> to checkout.</p>
+    }
+
+
+    }
+</div>
